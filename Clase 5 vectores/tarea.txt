@@ -1,0 +1,4 @@
+funcion q devuelva la cantidad de numeros pares que hay en el arrray.
+funcion q devuelva la cantidad de numeros positivos.
+funcion buscar CHAR, array de char(char y tamaño
+)

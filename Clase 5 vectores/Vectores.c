@@ -1,6 +1,14 @@
 #include "Vectores.h"
 #include <stdio.h>
 
+/** \brief Recorre el vector y si encuentra el numero devuelve la posicion del numero en el vector.Sino devuelve -1.
+ *
+ * \param int vec[] Vector
+ * \param int tamanio tamaño del vector
+ * \param int numero Numero a encontrar en el vector
+ * \return int Retorna la posicion, sino -1
+ *
+ */
 int devolverPosicion(int vec[],int tamanio,int numero)
 {
     int i;
@@ -11,10 +19,7 @@ int devolverPosicion(int vec[],int tamanio,int numero)
           return i;
       }
     }
-
     return -1;
-
-
 }
 
 
