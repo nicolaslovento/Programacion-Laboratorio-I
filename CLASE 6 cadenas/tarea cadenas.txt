@@ -1,0 +1,3 @@
+declarar tres variables char nombre[definimos nosotros],char apellido[],char apellidoYnombre[],el usuario ingresa apellido 
+ingresa nombre,y en la variablke apellido y nombre deberia quedar "Scarafilo, German",con mayuscula.variable nombre y apellido
+no se tocan.
