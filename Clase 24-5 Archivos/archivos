@@ -1,0 +1,145 @@
+//2 tipos de archivos:archivo de texto o binario().
+
+
+    FILE* pArchivo;//informacion propia del archivo. Su ubicacion/posicion
+    //3 pasos. Abrir, usar y cerrar.(siempre hay que cerrarlo porque ase pueden perder datos)
+    char cadena[50]="hola";
+
+    pArchivo = fopen("archivo.txt","w");
+
+    //devuelve un puntero si lo pudo abrir. Si no encuentra el directorio devuelve NULL
+    //se crean o leen en el directorio raiz.
+    //w: apertura de archivo. Para archivo binario en mayuscula
+    //si quiero abrir otro archivo poner la direccion.Ej: c:\\ads
+
+    if(pArchivo!=NULL)
+    {
+        fprintf(pArchivo,"%s  %d",cadena,156);
+        //funciona igual que el printf
+        //Se le pasa string ej:"hola" o %d =192
+        fclose(pArchivo);
+        printf("Guardado!!\n");
+
+    }else
+    {
+        printf("Imposible guardar.\n");
+    }
+
+    //Ahora leemos la cadena
+
+     pArchivo=fopen ("archivo.txt","r");
+
+    if(pArchivo!=NULL)
+    {
+        //mientras no sea el final del archivo lo lee.
+        while(!feof(pArchivo))
+        {
+            fgets(cadena,50,pArchivo);
+            puts(cadena);
+        }
+        fclose(pArchivo);
+
+    }
+    *************************************************************************************************************************************************
+
+    FILE* miArchivo;
+    int numero=64;
+
+    miArchivo=fopen("prueba1.txt","w");//si no existe lo crea.
+    //fwrite permite escribir cualquier tipo de dato. Nos conviene para los textos binarios.
+    //recibe 1= direccion de memoria.2=sizeof del tipo de dato que va a recibir.
+    // 3=Cantidad de datos que vamos a escribir. 4= recibe el puntero del FIle.
+
+    fwrite(&numero,sizeof(int),1,miArchivo);
+    //Convierte el 64 en ASCII. El 64 se guardo como codigo binario.
+    fclose(miArchivo);
+    //Para leerlo:
+
+    miArchivo = fopen("prueba1.txt","r");
+    //recibe lo mismo que el fwrite solo cambian los roles de la variable
+    fread(&numero,sizeof(int),1,miArchivo);
+    fclose(miArchivo);
+    printf("NUMERO: %d",numero);
+
+    ***************************************************************************************************************************************************
+
+    //Guardar array de numero en un archivo de texto
+    //guarda en tiempo real.
+    FILE* miArchivo;
+    int numero;
+    int lista[5];
+    int i;
+    miArchivo=fopen("prueba.txt","w");
+
+    for(i=0;i<5;i++)
+    {
+        printf("Ingrese un numero: ");
+        scanf("%d",&numero);
+
+        fwrite(&numero,sizeof(int),1,miArchivo);
+    }
+
+    fclose(miArchivo);
+
+******************************************************************************************************************************
+
+FILE* miArchivo;
+    int numero;
+    int lista[5];
+    int i=0;
+    miArchivo=fopen("prueba.txt","r");
+
+    while(!feof(miArchivo))
+    {
+        fread(&lista[i],sizeof(int),1,miArchivo);
+        if(feof(miArchivo))
+        {
+            break;
+        }
+
+        i++;
+    }
+    fclose(miArchivo);
+
+    for(i=0;i<5;i++)
+    {
+        printf("%d \n",lista[i]);
+    }
+
+    ******************************************************************************************************************************************
+     FILE* miArchivo;
+    int numero;
+    int lista[5]={1,2,3,4,5};
+    int i=0;
+
+    miArchivo=fopen("prueba3.txt","w");
+
+
+    fwrite(lista,sizeof(int),5,miArchivo);
+
+    fclose(miArchivo);
+
+    miArchivo=fopen("prueba3.txt","r");
+
+    fread(lista[i],sizeof(int),1,miArchivo);
+
+*******************************************************************************************************************************************
+
+
+FILE* miArchivo;
+    eDato d={1,'B'};
+    //Guardamos estructura en un archivo binario
+    //extension dat o bin o ninguna
+    miArchivo=fopen("miBinario.dat","wb");
+
+    if(miArchivo!=NULL)
+    {
+        //origen(puntero),
+        fwrite(&d,sizeof(eDato),1,miArchivo);
+        fclose(miArchivo);
+
+        printf("%d --%c",d.a,d.b);
+    }
+*******************************************************************************************************************************************
+
+//split 
