@@ -1,0 +1,64 @@
+ePunto* CrearEPunto(void)
+{
+      ePunto* newPunto;
+	newPunto=(ePunto*)malloc(sizeof(ePunto));
+      
+      
+      return newPunto;
+}
+
+ePunto* constructor(int x,int y)
+{
+      ePunto* p;
+      p=crearEPunto();
+	if(p!=NULL)
+       {
+          p->x=x;
+          p->y=y;
+        }
+      return p;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+int saveInFile(char* directory,ePunto* punto)
+{
+      FILE* pFile;
+	int cant;
+     int  retorno=-1
+      pFile=openf(directory,"wb");
+      if(pFile==NULL)
+      { 
+           printf("error al abrir el archivo");
+	   exit(1);
+           
+	}
+	
+	cant=fwrite(punto,sizeof(ePunto),1,pFile);
+	if(cant!=1)
+        {
+	    printf("Error al guardar en el archivo");
+	    exit(1);
+
+	}else
+	{
+	printf("Se cargo con exito..");
+	retorno=0;
+
+	}
+
+}
